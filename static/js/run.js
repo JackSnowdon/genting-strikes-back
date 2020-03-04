@@ -1,5 +1,3 @@
-const axios = require('axios');
-
 function getDetail(apiURL) {
     axios.get(apiURL).then(function(response) {
         showDetail(response.data);
@@ -21,7 +19,6 @@ function showDetail(data) {
         console.log(ships); // name1.innerText = names;
     }
 }
-
 
 var ships = [];
 getDetail("https://swapi.co/api/starships");
