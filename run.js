@@ -1,19 +1,21 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var req = new XMLHttpRequest();
-var URLhost = 'https://swapi.co/api/starships/'
+const axios = require('axios');
 
-
-function loadShips() {
-    req.open('GET', URLhost, true);
-    req.addEventListener('load', function() {
-        if (req.status >= 200 && req.status < 400) {
-            var response = JSON.parse(req.responseText);
-            console.log(response);
-        } else {
-            console.log('Error in network request: ' + req.statusText);
-        }
+function getDetail(apiURL) {
+    axios.get(apiURL).then(function(response) {
+        showDetail(response.data);
     });
-    req.send(null);
 }
 
-loadShips();
+function showDetail(data) {
+    for (i = 0; i < data.results.length; i++) {
+        names = names + data.results[i].name + "\n";
+        // name1.innerText = name1.innerText + "\n" + data.results[i].name;
+    }
+    if (data.next) {
+        getDetail(data.next);
+    } else {
+        console.log(names); // name1.innerText = names;
+    }
+}
+var names = "";
+getDetail("https://swapi.co/api/starships");
