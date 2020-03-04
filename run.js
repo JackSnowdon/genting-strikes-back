@@ -8,14 +8,20 @@ function getDetail(apiURL) {
 
 function showDetail(data) {
     for (i = 0; i < data.results.length; i++) {
-        names = names + data.results[i].name + "\n";
-        // name1.innerText = name1.innerText + "\n" + data.results[i].name;
+        var crew = data.results[i].crew;
+        if (crew > 10) {
+            ships.push(data.results[i])
+        } else {
+            // pass
+        }
     }
     if (data.next) {
         getDetail(data.next);
     } else {
-        console.log(names); // name1.innerText = names;
+        console.log(ships); // name1.innerText = names;
     }
 }
-var names = "";
+
+
+var ships = [];
 getDetail("https://swapi.co/api/starships");
