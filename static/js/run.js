@@ -19,8 +19,7 @@ function showDetail(data) {
         console.log(ships);
         var slist = document.getElementById("ship-list");
         console.log(slist)
-        for (x = 0; ships.length; x++) {
-            console.log(ships[x].name, ships[x].model, ships[x].crew, ships[x].passengers, ships[x].films, ships[x].films.length);
+        for (x = 0; x < ships.length; x++) {
             var adddiv = document.createElement("div");
             adddiv.setAttribute("class", "col-md-4 col-12");
 
@@ -52,15 +51,24 @@ function showDetail(data) {
             createnolist.appendChild(createpassengers)
 
             var createnofilms = document.createElement("li");
-            createnofilms.setAttribute("class", "ship-film-number");
-            createnofilms.innerHTML = "Films </br> " + ships[x].films.length;
+            if (ships[x].films.length == "3") {
+                createnofilms.setAttribute("class", "ship-film-number-high");
+                createnofilms.innerHTML = "Films </br> " + ships[x].films.length + " <i class='far fa-star'></i>";
+            } else {
+                createnofilms.setAttribute("class", "ship-film-number");
+                createnofilms.innerHTML = "Films </br> " + ships[x].films.length;
+            }
             createnolist.appendChild(createnofilms)
 
+            var shipfilms = ships[x].films
+
+            for (j = 0; j < shipfilms.length; j++) {
+                console.log(ships[x].name, shipfilms[j])
+            }
             adddiv.appendChild(addcard);
             slist.appendChild(adddiv);
         }
     }
 }
-
 var ships = [];
 getDetail("https://swapi.co/api/starships");
