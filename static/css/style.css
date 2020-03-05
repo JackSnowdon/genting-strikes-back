@@ -14,6 +14,11 @@
     text-align: center;
 }
 
+.header-small {
+    font-size: 18px;
+    text-align: center;
+}
+
 
 /* Cards */
 
@@ -26,6 +31,14 @@
     border-width: 1px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: black;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.ship-card:hover {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.6);
 }
 
 .ship-model {
@@ -45,4 +58,13 @@ li {
 .fa-star {
     color: green;
     font-size: 18px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.fa-star:hover {
+    font-size: 30px;
+    color: red;
 }
